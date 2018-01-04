@@ -27,6 +27,7 @@ namespace dht11 {
         pin = DigitalPin.P0;
         
         //% block = set pin to %pin=DigitalPin
+        //% blockId = "dht11_set_pin"
         set_pin(pin: DigitalPin) {
             this.pin = pin;
         }
