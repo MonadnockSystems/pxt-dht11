@@ -28,7 +28,7 @@ namespace dht11 {
      * Set pin at which the DHT data line is connected
      * @param pin_arg pin at which the DHT data line is connected
      */
-    //% block = "DHT11 is on pin %pin_arg=DigitalPin"
+    //% block = DHT11 is on pin %pin_arg=DigitalPin
     export function set_pin(pin_arg: DigitalPin): void {
         pin = pin_arg;
     }
