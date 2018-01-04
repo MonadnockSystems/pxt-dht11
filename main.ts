@@ -61,7 +61,9 @@ namespace dht11 {
             return { temperature, humidity };
         }
 
-        //% block
+        //% block = %dht11|Get Temperature
+        //% blockId = "dht11_get_temperature"
+        //% parts = "dht11"
         temperature(): number {
             let measurement = this._measure();
             return measurement.temperature;
