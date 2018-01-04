@@ -26,7 +26,7 @@ namespace dht11 {
     export class dht11 {
         pin = DigitalPin.P0;
         
-        //% block = %dht11|set pin to %pin=DigitalPin
+        //% block = set pin to %pin=DigitalPin
         set_pin(pin: DigitalPin) {
             this.pin = pin;
         }
