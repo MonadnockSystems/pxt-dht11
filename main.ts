@@ -27,7 +27,7 @@ namespace dht11 {
         pin = DigitalPin.P0;
         
         //% weight=84
-        //% blockId=dht11_set_pin block="%strip|dht11 is connected to %pin" icon="\uf080" blockExternalInputs=true
+        //% blockId=dht11_set_pin block="%strip|dht11 is connected to %pin" icon="\uf080" block="Set Pin"
         set_pin(pin: DigitalPin) {
             this.pin = pin;
         }
