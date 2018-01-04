@@ -1,0 +1,18 @@
+{
+    "name": "dht11",
+    "version": "0.0.0",
+    "description": "Driver for the DHT11 Temperature and Humidity Sensor",
+    "license": "APLv2",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": false
+}
