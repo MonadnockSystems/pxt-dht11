@@ -28,10 +28,10 @@ namespace dht11 {
      * Set pin at which the DHT data line is connected
      * @param pin pin at which the DHT data line is connected
      */
-    //% block = set pin to %pin=DigitalPin
+    //% block = "set pin to %pin_arg=DigitalPin"
     //% blockId = "dht11_set_pin"
-    export function set_pin(pin: DigitalPin): void {
-        this.pin = pin;
+    export function set_pin(pin_arg: DigitalPin): void {
+        pin = pin_arg;
     }
         
     function _measure(): dht11_measurement {
@@ -58,14 +58,14 @@ namespace dht11 {
         return { temperature, humidity };
     }
 
-    //% block = Get Temperature
+    //% block = "temperature"
     //% blockId = "dht11_get_temperature"
     export function temperature(): number {
         let measurement = this._measure();
         return measurement.temperature;
     }
 
-    //% block = Get Humidity
+    //% block = "humidity"
     //% blockId = "dht11_get_humidity"
     export function humidity(): number {
         let measurement = this._measure();
