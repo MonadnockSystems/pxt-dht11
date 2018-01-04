@@ -28,7 +28,7 @@ namespace dht11 {
      * Set pin at which the DHT data line is connected
      * @param pin pin at which the DHT data line is connected
      */
-    //% block = set pin to  % pin = number
+    //% block = set pin to %pin=DigitalPin
     //% blockId = "dht11_set_pin"
     export function set_pin(pin: DigitalPin): void {
         this.pin = pin;
