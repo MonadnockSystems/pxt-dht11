@@ -5,6 +5,8 @@ namespace dht11 {
         pins.digitalWritePin(pin, 0)
         basic.pause(18)
         let i = pins.digitalReadPin(pin)
+        pins.setPull(pin, PinPullMode.PullUp);
+
     }
     
     function wait_for_level(level: number): void {
