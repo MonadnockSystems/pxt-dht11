@@ -7,45 +7,69 @@ namespace dht11 {
         let i = pins.digitalReadPin(pin)
     }
     
-    function wait_for_level(pin: DigitalPin, level: number): void {
+    function wait_for_level(level: number): void {
         while (pins.digitalReadPin(pin) != level);
     }
     
-    function wait_for_low(pin: DigitalPin) {
-        wait_for_level(pin, 0)
+    function wait_for_low() {
+        wait_for_level(0)
     }
     
-    function wait_for_high(pin: DigitalPin) {
-        wait_for_level(pin, 1)
+    function wait_for_high() {
+        wait_for_level(1)
     }
-    
-    interface dht11_measurement {
-        temperature: number;
-        humidity: number;
+
+    function pin_is_high(): Boolean {
+        return pins.digitalReadPin(pin) == 1;
     }
         
     /**
      * Set pin at which the DHT data line is connected
      * @param pin_arg pin at which the DHT data line is connected
      */
-    //% block = DHT11 is on pin %pin_arg=DigitalPin
+    //% block = "DHT11 is on pin %pin_arg=DigitalPin"
     export function set_pin(pin_arg: DigitalPin): void {
         pin = pin_arg;
     }
-        
-    function _measure(): dht11_measurement {
-        signal_dht11(this.pin);
-        wait_for_low(this.pin);
-        wait_for_high(this.pin);
-        wait_for_low(this.pin);
+    
+    //% block
+    export function temperature(): number {
+        signal_dht11(pin);
+        wait_for_low();
+        wait_for_high();
+        wait_for_low();
         
         let value = 0;
         let counter = 0;
             
         for (let i = 0; i <= 32 - 1; i++) {
-            wait_for_high(this.pin);
+            wait_for_high();
             counter = 0
-            while (pins.digitalReadPin(this.pin) == 1) {
+            while (pin_is_high()) {
+                counter += 1;
+            }
+            if (counter > 4) {
+                value = value + (1 << (31 - i));
+            }
+        }
+        let temperature: number = (value & 0x0000ff00) >> 8;
+        return temperature;
+    }
+
+    //% block
+    export function humidity(): number {
+        signal_dht11(pin);
+        wait_for_low();
+        wait_for_high();
+        wait_for_low();
+        
+        let value = 0;
+        let counter = 0;
+            
+        for (let i = 0; i <= 32 - 1; i++) {
+            wait_for_high();
+            counter = 0
+            while (pin_is_high()) {
                 counter += 1;
             }
             if (counter > 4) {
@@ -53,19 +77,6 @@ namespace dht11 {
             }
         }
         let humidity: number = (value >> 24);
-        let temperature: number = (value & 0x0000ff00) >> 8;
-        return { temperature, humidity };
-    }
-
-    //% block
-    export function temperature(): number {
-        let measurement = this._measure();
-        return measurement.temperature;
-    }
-
-    //% block
-    export function humidity(): number {
-        let measurement = this._measure();
-        return measurement.humidity;
+        return humidity;
     }
 }
