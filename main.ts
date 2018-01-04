@@ -26,8 +26,7 @@ namespace dht11 {
     export class dht11 {
         pin = DigitalPin.P0;
         
-        //% weight=84
-        //% blockId="dht11_set_pin" block="%strip|dht11 is connected to %pin" icon="\uf080" block="Set Pin"
+        //% block
         set_pin(pin: DigitalPin) {
             this.pin = pin;
         }
@@ -55,12 +54,14 @@ namespace dht11 {
             let temperature: number = (value & 0x0000ff00) >> 8;
             return { temperature, humidity };
         }
-        
+
+        //% block
         temperature(): number {
             let measurement = this._measure();
             return measurement.temperature;
         }
         
+        //% block
         humidity(): number {
             let measurement = this._measure();
             return measurement.humidity;
