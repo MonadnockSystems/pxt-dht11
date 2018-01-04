@@ -26,7 +26,11 @@ namespace dht11 {
     export class dht11 {
         pin = DigitalPin.P0;
         
-        //% block = %dht11|set pin to %pin=number
+        /**
+         * Set pin at which the DHT data line is connected
+         * @param pin pin at which the DHT data line is connected
+         */
+        //% block = set pin to  % pin = number
         //% blockId = "dht11_set_pin"
         set_pin(pin: DigitalPin) {
             this.pin = pin;
@@ -68,4 +72,12 @@ namespace dht11 {
             return measurement.humidity;
         }
     }
+    //% blockId="dht11_create" block="dht11 at pin %pin"
+    //% weight=90 blockGap=8
+    //% parts="dht11"
+    export function create(pin: DigitalPin): dht11 {
+        let dht = new dht11();
+        dht.set_pin(pin)
+        return dht;
+}
 }
