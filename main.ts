@@ -13,12 +13,11 @@ namespace dht11 {
      * Set pin at which the DHT data line is connected
      * @param pin_arg pin at which the DHT data line is connected
      */
-    //% block = "DHT11 is on pin %pin_arg"
+    //% block = "Setup DHT11 on pin %pin_arg" blockID="dht11_set_pin"
     export function set_pin(pin_arg: DigitalPin): void {
         pin = pin_arg;
     }
 
-    //% block
     function dht11_read(): number {
         signal_dht11(pin);
 
@@ -43,6 +42,7 @@ namespace dht11 {
         return value;
     }
 
+    //% block
     export function temperature(): number {
         return (dht11_read() & 0x0000ff00) >> 8;
     }
