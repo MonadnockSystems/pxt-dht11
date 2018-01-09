@@ -1,6 +1,6 @@
 {
     "name": "dht11",
-    "version": "0.0.27",
+    "version": "0.0.28",
     "description": "Driver for the DHT11 Temperature and Humidity Sensor",
     "license": "APLv2",
     "dependencies": {
