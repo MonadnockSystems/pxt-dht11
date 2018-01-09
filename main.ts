@@ -1,4 +1,4 @@
-//% color=#f44242
+//% color=#f44242 icon="\uf197" block="Let's Talk Science"
 namespace dht11 {
     let pin = DigitalPin.P0;
     function signal_dht11(pin: DigitalPin): void {
@@ -13,7 +13,7 @@ namespace dht11 {
      * Set pin at which the DHT data line is connected
      * @param pin_arg pin at which the DHT data line is connected
      */
-    //% block = "Setup DHT11 on pin %pin_arg" blockID="dht11_set_pin"
+    //% block="Setup DHT11 on pin %pin_arg" blockID="dht11_set_pin"
     export function set_pin(pin_arg: DigitalPin): void {
         pin = pin_arg;
     }
